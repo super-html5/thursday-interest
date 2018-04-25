@@ -34,6 +34,7 @@ export class ActivityComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isHaveLoad = true;
     this.title.setTitle('加油券');
     document.body.style.backgroundColor = '#fff';
     this.activatedRoute.queryParams.subscribe(res => {
@@ -47,7 +48,6 @@ export class ActivityComponent implements OnInit {
    *  获取加油券金额列表
    */
   getMoney(activityId: number): void {
-    this.isHaveLoad = true;
     this.indexService.getMoney(activityId)
       .then(res => {
         this.isHaveLoad = false;

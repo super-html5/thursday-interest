@@ -18,8 +18,8 @@
       </form>
     </div>
     <div class="col-5 mt-4 right-img-box">
-      <img *ngIf="type=='2'" src="./assets/images/7-1.png" alt="" width="100%">
-      <img *ngIf="type=='1'" src="./assets/images/8-1.png" alt="" width="100%">
+      <img *ngIf="type=='2'" src="./assets/images/7-1.png" alt="" (click)="$event.stopPropagation();" width="100%">
+      <img *ngIf="type=='1'" src="./assets/images/8-1.png" alt="" (click)="$event.stopPropagation();" width="100%">
       <button type="button" class="btn btn-primary btn-block mt-2" (click)="submit(f.value.name, f.value.phone,f.value.plateNumber)">提交</button>
     </div>
 

@@ -4,13 +4,13 @@
          height="100%">
     <img [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list mt-3" src="./assets/images/2-3.png" alt=""
          height="100%">
-    <img class="img-list mt-3" src="./assets/images/2-4.png" alt="" height="100%">
-    <img class="img-list mt-3" src="./assets/images/2-5.png" alt="" height="100%">
+    <img class="img-list mt-3" src="./assets/images/2-4.png" (click)="$event.stopPropagation();" alt="" height="100%">
+    <img class="img-list mt-3" src="./assets/images/2-5.png" (click)="$event.stopPropagation();" alt="" height="100%">
   </div>
 </div>
 <div *ngIf="!isStart" class="container-fluid px-0 index-bg1" [@flyIn]="'inactive'">
   <div class="position-relative">
-    <img src="./assets/images/2-11.png" alt="" width="100%" height="100%">
+    <img src="./assets/images/2-11.png" alt="" (click)="$event.stopPropagation();" width="100%" height="100%">
     <div class="countFont position-absolute text-center">距活动开始还有{{startCountNumber}}天</div>
   </div>
 </div>
