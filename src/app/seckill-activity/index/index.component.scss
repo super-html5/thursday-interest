@@ -1,0 +1,36 @@
+@import "../../../styles";
+
+.index-bg {
+  @include _bg("../../../assets/images/2-1.png", #fc7a3e);
+
+  .mt-10 {
+    margin-top: 13rem;
+    .img-list {
+      width: 88%;
+      margin: 0 6%;
+      z-index: 100;
+    }
+  }
+
+}
+
+.index-bg1 {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fc7a3e;
+  z-index: -1;
+  .countFont {
+    top: 14%;
+    left: 30%;
+    width: 40%;
+    padding: 4px 0;
+    line-height: 1em;
+    font-size: .9rem;
+    color: #ff0;
+    border: 1px solid #ff0;
+  }
+
+}
