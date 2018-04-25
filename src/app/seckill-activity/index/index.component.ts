@@ -35,4 +35,8 @@ export class IndexComponent implements OnInit {
     // }
   }
 
+  banImg(event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

@@ -105,4 +105,9 @@ export class ReceiveGiftComponent implements OnInit {
         });
     }
   }
+
+  banImg(event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }

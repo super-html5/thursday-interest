@@ -116,6 +116,10 @@ export class ActivityComponent implements OnInit {
     location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
   }
 
+  banImg(event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   /**
    *  立即购买
    */

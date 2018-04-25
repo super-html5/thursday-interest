@@ -25,5 +25,8 @@ export class ReceiveSuccessComponent implements OnInit {
     });
 
   }
-
+  banImg(event): void {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
