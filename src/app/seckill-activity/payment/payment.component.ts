@@ -179,7 +179,7 @@ export class PaymentComponent implements OnInit {
         this.btnText = '确认支付';
         const errorMsg = JSON.parse(res._body);
         if (errorMsg.code === 'oneMonthOnce.order.NotRule') {
-          alert('您本周已经参加过本活动，请多留意优驾行，福利多多');
+          alert('您本月已经参加过本活动，请多留意优驾行，福利多多');
           history.go(-2);
         } else if (errorMsg.code === 'haveNotPay.order.NotRule') {
           alert('您已提交过订单 请前往个人中心我的订单进行支付或取消订单');

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {IndexService} from './service/index.service'
+import {IndexService} from './service/index.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

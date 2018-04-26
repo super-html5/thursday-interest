@@ -6,6 +6,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ShareModule} from './share/share.module';
 import {AppRoutingModule} from './app-routing.module';
+import {IndexService} from './service/index.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
     ShareModule,
     BrowserAnimationsModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IndexService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
