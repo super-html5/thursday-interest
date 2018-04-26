@@ -67,9 +67,7 @@ export class ActivityComponent implements OnInit {
       })
       .catch(res => {
         this.isHaveLoad = false;
-        if (this.activityId === 2 && res.status == 404) {
-          this.setSwalDialogError('每个月只能购买一次哦!');
-        } else if (res.status == 401) {
+        if (res.status == 401) {
           this.indexService.getTokenId(localStorage.getItem('headimgurl'),
             localStorage.getItem('nickname'),
             localStorage.getItem('openid'))
@@ -120,6 +118,7 @@ export class ActivityComponent implements OnInit {
     event.preventDefault();
     event.stopPropagation();
   }
+
   /**
    *  立即购买
    */
