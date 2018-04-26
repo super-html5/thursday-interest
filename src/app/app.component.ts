@@ -12,6 +12,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getToken();
+  }
+
+  getToken(): void {
     if (!localStorage.getItem('headimgurl')) {
       localStorage.setItem('headimgurl', '用户无头像');
     }
