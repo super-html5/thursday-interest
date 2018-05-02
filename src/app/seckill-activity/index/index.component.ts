@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {flyIn} from '../../animationsVariable';
 
+declare var $: any;
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -23,16 +24,21 @@ export class IndexComponent implements OnInit {
      * 倒计时
      * @type {number}
      */
-    // const now = new Date().getDay();
-    // if (now < 4) {
-    //   this.isStart = false;
-    //   this.startCountNumber = 4 - now;
-    // } else if (now > 4) {
-    //   this.isStart = false;
-    //   this.startCountNumber = 7 - (now - 4);
-    // } else {
-    //   this.isStart = true;
-    // }
+    $.ajax({
+      type: 'OPTIONS', url: '/', complete: function (x) {
+        const time = x.getResponseHeader('Date');
+        const now = new Date(time).getDay();
+        if (now < 4) {
+          this.isStart = false;
+          this.startCountNumber = 4 - now;
+        } else if (now > 4) {
+          this.isStart = false;
+          this.startCountNumber = 7 - (now - 4);
+        } else {
+          this.isStart = true;
+        }
+      }
+    });
   }
 
   banImg(event): void {
