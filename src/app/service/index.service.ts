@@ -124,6 +124,17 @@ export class IndexService {
   }
 
   /**
+   * 获取当前时间戳
+   * @returns {Promise<TResult|TResult2|TResult1>}
+   */
+  getTime(): Promise<any> {
+    return this.http.get(environment.getTimeUrl)
+      .toPromise()
+      .then(res => res.json() as any)
+      .catch();
+  }
+
+  /**
    * 异常
    * @param error 异常
    */

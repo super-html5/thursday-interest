@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {flyIn} from '../../animationsVariable';
+import {IndexService} from '../../service/index.service';
 
 declare var $: any;
 @Component({
@@ -14,20 +15,24 @@ export class IndexComponent implements OnInit {
   isStart: boolean = true;
   startCountNumber: number = 0;
 
-  constructor(private title: Title) {
+  constructor(private title: Title,
+              private indexService: IndexService) {
   }
 
   ngOnInit() {
     this.title.setTitle('加油券秒杀');
     document.body.style.backgroundColor = '#fc7a3e';
-    /**
-     * 倒计时
-     * @type {number}
-     */
-    $.ajax({
-      type: 'OPTIONS', url: '/', complete: function (x) {
-        const time = x.getResponseHeader('Date');
-        const now = new Date(time).getDay();
+    this.getTime();
+
+  }
+
+  /**
+   * 获取当前服务器时间，倒计时
+   */
+  getTime(): void {
+    this.indexService.getTime()
+      .then(res => {
+        const now = new Date(Number(res.time)).getDay();
         if (now < 4) {
           this.isStart = false;
           this.startCountNumber = 4 - now;
@@ -37,8 +42,10 @@ export class IndexComponent implements OnInit {
         } else {
           this.isStart = true;
         }
-      }
-    });
+      })
+      .catch(() => {
+        alert('当前访问人数过多，请稍后再试！');
+      });
   }
 
   banImg(event): void {

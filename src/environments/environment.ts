@@ -45,4 +45,8 @@ export const environment = {
    * 汽车养护券
    */
   receiveVoucher: `/ccb-api/api/v1/cbc/SecKillOrders/giveCareCoupons`,
+  /**
+   * 获取时间戳
+   */
+  getTimeUrl: `/ccb-api/api/v1/cbc/time/nowTime`,
 };
