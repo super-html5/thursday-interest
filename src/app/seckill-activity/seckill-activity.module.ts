@@ -9,6 +9,10 @@ import {ReceiveGiftComponent} from './receive-gift/receive-gift.component';
 import {ReceiveSuccessComponent} from './receive-success/receive-success.component';
 import {PaymentComponent} from './payment/payment.component';
 import {WPaymentComponent} from './w-payment/w-payment.component';
+import {AutomobileServiceComponent} from './automobile-service/automobile-service.component';
+import { ServiceDetailsComponent } from './service-details/service-details.component';
+import { ServiceBusinessComponent } from './service-details/service-business/service-business.component';
+import { CarPaymentComponent } from './car-payment/car-payment.component';
 @NgModule({
   imports: [
     ShareModule,
@@ -21,6 +25,10 @@ import {WPaymentComponent} from './w-payment/w-payment.component';
     ReceiveSuccessComponent,
     PaymentComponent,
     WPaymentComponent,
+    AutomobileServiceComponent,
+    ServiceDetailsComponent,
+    ServiceBusinessComponent,
+    CarPaymentComponent,
   ],
   providers: [IndexService]
 })

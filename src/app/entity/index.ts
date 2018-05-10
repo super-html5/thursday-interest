@@ -58,3 +58,80 @@ export class MaintenanceVoucher {
   plateNumber: string;
   type: number;
 }
+
+/**
+ * 汽车养护类别 及其类别下的商品
+ */
+export class CarClassifyList {
+  id: string;
+  name: string;
+  createTime: number;
+  updateTime: number;
+  status: number;
+  check: boolean;
+  itemsList: CarItemsList[];
+}
+export class CarItemsList {
+  id: string;
+  categoryId: string;
+  name: string;
+  coverImg: string;
+  description: string;
+  originalPrice: number;
+  salePrice: number;
+  saleStatus: number;
+  storage_count: number;
+  createTime: number;
+  updateTime: number;
+  status: number;
+  activeType: number;
+  seller: CarSeller[];
+}
+export class CarSeller {
+  id: string;
+  telephone: string;
+  name: string;
+  address: string;
+  createTime: number;
+  updateTime: number;
+  status: number;
+}
+
+/**
+ * 汽车养护 下单
+ */
+export class AddCarOrder {
+  id: string;
+  accountId: string;
+  orderSerial: string;
+  orderFrom: number;
+  salePrice: number;
+  payPrice: number;
+  discountAmount: number;
+  phoneNo: string;
+  bankSerialNo: string;
+  mark: string;
+  couponId: string;
+  createTime: string;
+  payTime: string;
+  finishTime: string;
+  updateTime: string;
+  refund: string;
+  isPromotion: number;
+  isAvailable: number;
+  payType: string;
+  status: number;
+  payStatus: number;
+  sendStatus: number;
+  ordersItems: OrdersItems[];
+}
+export class OrdersItems {
+  id: string;
+  orderSerial: string;
+  sellerId: string;
+  sellerName: string;
+  itemId: string;
+  itemName: string;
+  reserveTime: number;
+  reserveMobile: string;
+}

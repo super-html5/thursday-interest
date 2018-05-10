@@ -1,0 +1,39 @@
+.bg-blue {
+  background: #50AFDF;
+  .down {
+    width: 18px;
+    margin-top: 6px;
+  }
+}
+
+.classify {
+  i {
+    color: #50AFDF;
+    margin-top: 5px;
+  }
+}
+
+.goods {
+  border-bottom: 6px solid #e0e0e0;
+  .text-thought {
+    text-decoration: line-through;
+    color: #666;
+  }
+  button {
+    height: 3rem;
+    background: #50AFDF;
+    &.sell-out {
+      background: #999;
+    }
+  }
+}
+
+.noGoods {
+  position: absolute;
+  height: 100%;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+}

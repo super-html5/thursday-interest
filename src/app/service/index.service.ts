@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import {Money, AddOrder, MaintenanceVoucher} from '../entity/index';
+import {Money, AddOrder, MaintenanceVoucher, CarClassifyList, AddCarOrder} from '../entity/index';
 import {environment} from '../../environments/environment';
 @Injectable()
 export class IndexService {
@@ -122,6 +122,46 @@ export class IndexService {
       .then(res => res.json() as MaintenanceVoucher)
       .catch(this._error);
   }
+
+  /**
+   * 汽车养护类别 及其类别下的商品
+   * @returns {Promise<any|TResult2|CarClassifyList[]>}
+   */
+  getclassifyList(): Promise<CarClassifyList[]> {
+    return this.http.get(environment.classifyUrl, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as CarClassifyList[])
+      .catch(this._error);
+  }
+
+  /**
+   * 汽车养护 下单
+   * @returns {Promise<any|TResult2|TResult1>}
+   */
+  addCarOrder(sellerId: string, itemId: string, reserveTime: string, reserveMobile: string): Promise<AddCarOrder> {
+    return this.http.post(environment.addCarOrderUrl, {
+      'sellerId': sellerId,
+      'itemId': itemId,
+      'reserveTime': reserveTime,
+      'reserveMobile': reserveMobile
+    }, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as AddCarOrder)
+      .catch(this._error);
+  }
+
+  /**
+   * 汽车养护 判断订单是否能够支付
+   * @returns {Promise<any|TResult2|TResult1>}
+   */
+  judgeCarOrderd(orderSerial: string): Promise<AddCarOrder> {
+    const judgeCarOrderdUrl = `${environment.judgeCarOrderdUrl}/${orderSerial}/serialNumber`;
+    return this.http.get(judgeCarOrderdUrl, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as AddCarOrder)
+      .catch(this._error);
+  }
+
 
   /**
    * 获取当前时间戳

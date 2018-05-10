@@ -24,6 +24,7 @@
     "@toverux/ngsweetalert2": "^1.2.2",
     "bootstrap": "^4.0.0-beta",
     "classlist.js": "^1.1.20150312",
+    "font-awesome": "^4.7.0",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
     "jquery": "^3.2.1",

@@ -1,0 +1,83 @@
+<div *ngIf="goodses?.length!==0" class="container-fluid px-0 bg-white" [@flyIn]="'inactive'">
+
+  <div class="row mx-auto">
+    <div class="bg-blue col-12 px-0 py-2 text-white" (click)="changeDown()">
+      <span class="px-3 float-left">全部分类</span>
+      <img *ngIf="down" class="down float-left" src="./assets/images/carService/down.png" alt="">
+      <img *ngIf="!down" class="down float-left" src="./assets/images/carService/up.png" alt="">
+    </div>
+  </div>
+
+  <ul *ngIf="!down" class="classify row mx-auto list-unstyled mb-0">
+    <li class="col-12 px-0 py-2 border-bottom" (click)="checkType(-1)">
+      <span class="px-3">全部分类</span>
+      <i *ngIf="selectAll" class="fa fa-check fa-lg float-right mr-4"></i>
+    </li>
+    <li *ngFor="let carClassify of carClassifyList; let i = index;" class="col-12 px-0 py-2 border-bottom" (click)="checkType(i)">
+      <span class="px-3">{{carClassify?.name}}</span>
+      <i *ngIf="carClassify.check" class="fa fa-check fa-lg float-right mr-4"></i>
+    </li>
+  </ul>
+
+  <div *ngFor="let goods of goodses" class="goods row mx-auto clearfix py-3">
+    <div class="col-5 pr-0">
+      <img src="./assets/images/carService/del.png" alt="" width="100%">
+      <!--<img [src]="goods.coverImg" alt="" width="100%">-->
+    </div>
+    <div class="col-7">
+      <div class="text-truncate" style="max-width: 100%;">{{goods?.name}}</div>
+      <div class="row mx-auto mt-3">
+        <div class="col-6 pl-0">
+          <span class="text-danger font-weight-bold">￥{{goods?.salePrice| number:'1.2-2'}}</span><br/>
+          <span class="text-thought">￥{{goods?.originalPrice| number:'1.2-2'}}</span>
+        </div>
+        <button *ngIf="goods.saleStatus===0" class="col-6 px-0 text-white border-0 rounded" (click)="buyGoods(goods)">
+          立即抢购
+        </button>
+        <button *ngIf="goods.saleStatus===1" disabled class="sell-out col-6 px-0 text-white border-0 rounded">
+          已售罄
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div *ngIf="goodses?.length==0" class="noGoods px-0 container-fluid" [@flyIn]="'inactive'">
+  <div class="row mx-auto">
+    <div class="bg-blue col-12 px-0 py-2 text-white" (click)="changeDown()">
+      <span class="px-3 float-left">全部分类</span>
+      <img *ngIf="down" class="down float-left" src="./assets/images/carService/down.png" alt="">
+      <img *ngIf="!down" class="down float-left" src="./assets/images/carService/up.png" alt="">
+    </div>
+  </div>
+  <img style="margin-top: 7rem;" src="./assets/images/carService/noGoods.png" alt="" width="100%">
+</div>
+
+
+<div id="mess_loaddinghtml5" *ngIf="isHaveLoad">
+  <div class="loadding">
+    <div class="loaddingtishi"></div>
+    <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,11 +20,13 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
+        "./assets/css/iosSelect.css",
         "./assets/css/sweetalert2.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/bootstrap/dist/js/bootstrap.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "./assets/js/iosSelect.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
