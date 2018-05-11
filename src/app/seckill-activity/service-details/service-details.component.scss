@@ -27,13 +27,10 @@
       }
     }
     .result {
-      //display: block;
       line-height: 20px;
       width: 80%;
       margin-left: 55px;
       color: #555;
-      //outline: none;
-      //border: none;
     }
   }
 }
@@ -48,6 +45,9 @@
     background: #50AFDF;
     border: none;
     outline: none;
+    &:disabled {
+      background: #999;
+    }
   }
   .specialBtn {
     background: #ccc;

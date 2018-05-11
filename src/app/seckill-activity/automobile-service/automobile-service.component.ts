@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {IndexService} from '../../service/index.service';
 import {CarClassifyList, CarItemsList} from '../../entity/index';
 import {flyIn} from '../../animationsVariable';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SwalComponent} from '@toverux/ngsweetalert2';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-automobile-service',
@@ -18,16 +20,25 @@ export class AutomobileServiceComponent implements OnInit {
   selectAll: boolean = true;
   goodses: any = [];
   isHaveLoad: boolean = false;
+  activeType: number;
+  isComplete: boolean = false;
+  @ViewChild('dialog') private swalDialog: SwalComponent;
+  titleText: string = '全部分类';
 
   constructor(private title: Title,
               private indexService: IndexService,
-              private router: Router) {
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private location: Location) {
   }
 
   ngOnInit() {
     this.title.setTitle('汽车服务');
-    document.body.style.background = '#e0e0e0';
+    document.body.style.background = '#fff';
     this.getclassifyList();
+    this.activatedRoute.queryParams.subscribe(res => {
+      this.activeType = Number(res.activeType);
+    });
   }
 
   /**
@@ -41,22 +52,32 @@ export class AutomobileServiceComponent implements OnInit {
    * 按类型显示商品
    * @param index
    */
-  checkType(index: number): void {
+  checkType(index: number, name: string): void {
+    this.down = true;
+    this.titleText = name;
+    this.goodses = [];
     this.carClassifyList.forEach((value) => {
       value.check = false;
     });
-    if (index === -1) {
+
+    if (index === -1) { // 点击全部分类
       this.selectAll = true;
-      this.goodses = [];
       this.carClassifyList.forEach((value) => {
         value.itemsList.forEach((item) => {
-          this.goodses.push(item);
+          if (item.activeType === this.activeType) {
+            this.goodses.push(item);
+          }
         });
       });
-    } else {
-      this.carClassifyList[index].check = true;
+    } else { // 点击类型分类
       this.selectAll = false;
-      this.goodses = this.carClassifyList[index].itemsList;
+      this.carClassifyList[index].check = true;
+      const itemsList = this.carClassifyList[index].itemsList;
+      itemsList.forEach((item) => {
+        if (item.activeType === this.activeType) {
+          this.goodses.push(item);
+        }
+      });
     }
     console.log(this.goodses);
   }
@@ -68,18 +89,22 @@ export class AutomobileServiceComponent implements OnInit {
     this.isHaveLoad = true;
     this.indexService.getclassifyList()
       .then(res => {
-        console.log(res);
         this.isHaveLoad = false;
+        this.isComplete = true;
         this.carClassifyList = res;
         this.carClassifyList.forEach((value) => {
           value.itemsList.forEach((item) => {
-            this.goodses.push(item);
+            if (item.activeType === this.activeType) {
+              this.goodses.push(item);
+            }
           });
         });
       })
       .catch(res => {
         this.isHaveLoad = false;
+        this.isComplete = true;
         console.log(res);
+        this.setSwalDialogError('当前访问人数过多，请稍后再试！');
       });
   }
 
@@ -89,5 +114,26 @@ export class AutomobileServiceComponent implements OnInit {
   buyGoods(goods: CarItemsList): void {
     localStorage.setItem('automobileServiceGoods', JSON.stringify(goods));
     this.router.navigate(['/seckill/serviceDetails']);
+  }
+
+
+  /**
+   * 弹框
+   * @param title
+   * @param text
+   */
+  setSwalDialogError(title: string): void {
+    this.swalDialog.title = title;
+    this.swalDialog.options = {
+      'confirmButtonColor': '#50AFDF',
+      'confirmButtonText': '确认'
+    };
+    this.swalDialog.show();
+    this.swalDialog.confirm.subscribe(() => {
+      this.location.back();
+    });
+    this.swalDialog.cancel.subscribe(() => {
+      this.location.back();
+    });
   }
 }

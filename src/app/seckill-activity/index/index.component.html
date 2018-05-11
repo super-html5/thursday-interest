@@ -4,8 +4,8 @@
          height="100%">
     <img [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list mt-3" src="./assets/images/2-3.png" alt=""
          height="100%">
-    <img class="img-list mt-3" src="./assets/images/2-4.png" (click)="banImg($event)" alt="" height="100%">
-    <img class="img-list mt-3" src="./assets/images/2-5.png" (click)="banImg($event)" alt="" height="100%">
+    <img class="img-list mt-3" src="./assets/images/2-4.png" [routerLink]="['/seckill/car']" [queryParams]="{'activeType':1}" alt="" height="100%">
+    <img class="img-list mt-3" src="./assets/images/2-5.png" [routerLink]="['/seckill/car']" [queryParams]="{'activeType':0}" alt="" height="100%">
   </div>
 </div>
 <div *ngIf="!isStart" class="container-fluid px-0 index-bg1" [@flyIn]="'inactive'">
