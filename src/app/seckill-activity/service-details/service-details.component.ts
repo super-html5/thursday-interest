@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Title} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml, Title} from '@angular/platform-browser';
 import {flyIn} from '../../animationsVariable';
 import {SwalComponent} from '@toverux/ngsweetalert2';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -24,9 +24,11 @@ export class ServiceDetailsComponent implements OnInit {
   @ViewChild('dialog') private swalDialog: SwalComponent;
   goods: CarItemsList;
   business: CarSeller;
+  oilExplainHtml: SafeHtml;
 
   constructor(private title: Title,
-              private router: Router) {
+              private router: Router,
+              private domSanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
@@ -35,6 +37,7 @@ export class ServiceDetailsComponent implements OnInit {
     this.getDateTime();
     this.goods = JSON.parse(localStorage.getItem('automobileServiceGoods'));
     console.log(this.goods);
+    this.oilExplainHtml = this.domSanitizer.bypassSecurityTrustHtml(this.goods.description);
   }
 
   /**
