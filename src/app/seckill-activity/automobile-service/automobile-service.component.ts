@@ -120,7 +120,6 @@ export class AutomobileServiceComponent implements OnInit {
   /**
    * 弹框
    * @param title
-   * @param text
    */
   setSwalDialogError(title: string): void {
     this.swalDialog.title = title;
