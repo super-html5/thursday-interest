@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {flyIn} from '../../animationsVariable';
 import {CarItemsList, AddCarOrder} from '../../entity/index';
 import {IndexService} from '../../service/index.service';
 import {ActivatedRoute} from '@angular/router';
+import {SwalComponent} from '@toverux/ngsweetalert2';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-car-payment',
@@ -21,10 +23,12 @@ export class CarPaymentComponent implements OnInit {
   paramsData: any;
   ua = window.navigator.userAgent.toLowerCase();
   reg = /MicroMessenger/i;
+  @ViewChild('dialog') private swalDialog: SwalComponent;
 
 
   constructor(private indexService: IndexService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -55,6 +59,25 @@ export class CarPaymentComponent implements OnInit {
         this.disabled = false;
         this.isHaveLoad = false;
         this.btnText = '确认支付';
+        // const _error = JSON.parse(res._body);
+        // if (_error.code === 'item.NotFound') {
+        //   this.setSwalDialogError('商品不存在');
+        // } else if (_error.code === 'illegalItemSeller.NotRule') {
+        //   this.setSwalDialogError('商家不合法');
+        // } else if (_error.code === 'seller.NotFound') {
+        //   this.setSwalDialogError('商家不存在');
+        // } else if (_error.code === 'carLifeOrdersParam.NotRule') {
+        //   this.setSwalDialogError('下单参数不合法');
+        // } else if (_error.code === 'itemId.NotRule') {
+        //   this.setSwalDialogError('商品id不合法');
+        // } else if (_error.code === 'reserveMobile.NotRule') {
+        //   this.setSwalDialogError('预约电话不合法');
+        // } else if (_error.code === 'sellerId.NotRule') {
+        //   this.setSwalDialogError('卖家id不合法');
+        // } else {
+        // }
+        this.setSwalDialogError('当前访问人数过多，请稍后再试！');
+
       });
   }
 
@@ -69,6 +92,7 @@ export class CarPaymentComponent implements OnInit {
         this.disabled = false;
         this.isHaveLoad = false;
         this.btnText = '确认支付';
+        this.setSwalDialogError('当前访问人数过多，请稍后再试！');
       });
   }
 
@@ -111,5 +135,25 @@ export class CarPaymentComponent implements OnInit {
     this.value = 991;
     this.img2 = './assets/images/xuan.png';
     this.img1 = './assets/images/unxuan.jpg';
+  }
+
+
+  /**
+   * 弹框
+   * @param title
+   */
+  setSwalDialogError(title: string): void {
+    this.swalDialog.title = title;
+    this.swalDialog.options = {
+      'confirmButtonColor': '#50AFDF',
+      'confirmButtonText': '确认'
+    };
+    this.swalDialog.show();
+    this.swalDialog.confirm.subscribe(() => {
+      this.location.back();
+    });
+    this.swalDialog.cancel.subscribe(() => {
+      this.location.back();
+    });
   }
 }
