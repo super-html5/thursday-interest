@@ -49,7 +49,6 @@ export class CarPaymentComponent implements OnInit {
     this.btnText = '请稍后';
     const paramsData = this.paramsData;
     this.indexService.addCarOrder(paramsData.sellerId, this.goods.id, paramsData.reserveTime, paramsData.reserveMobile)
-    // this.indexService.addCarOrder('2', '10', '2018-05-08 12:30:00', '18729904064')
       .then(res => {
         console.log(res);
         this.judgeCarOrderd(res.orderSerial);
