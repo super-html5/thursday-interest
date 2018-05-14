@@ -108,16 +108,18 @@ export class ServiceDetailsComponent implements OnInit {
     // 数据初始化
     function formatYear(_nowYear: number) {
       const arr = [];
-      arr.push({
-        id: _nowYear + '',
-        value: _nowYear + '年'
-      });
+      for (let i = _nowYear; i <= _nowYear + 1; i++) {
+        arr.push({
+          id: i + '',
+          value: i + '年'
+        });
+      }
       return arr;
     }
 
-    function formatMonth() {
+    function formatMonth(_nowMonth: number) {
       const arr = [];
-      for (let i = nowMonth; i <= 12; i++) {
+      for (let i = _nowMonth; i <= 12; i++) {
         arr.push({
           id: i + '',
           value: i + '月'
@@ -126,9 +128,9 @@ export class ServiceDetailsComponent implements OnInit {
       return arr;
     }
 
-    function formatDate(count: number) {
+    function formatDate(_nowDate: number, count: number) {
       const arr = [];
-      for (let i = nowDate; i <= count; i++) {
+      for (let i = _nowDate; i <= count; i++) {
         arr.push({
           id: i + '',
           value: i + '日'
@@ -141,22 +143,44 @@ export class ServiceDetailsComponent implements OnInit {
       callback(formatYear(nowYear));
     };
     const monthData = function (year, callback) {
-      callback(formatMonth());
+      if (year == nowYear) {
+        callback(formatMonth(nowMonth));
+      } else {
+        callback(formatMonth(1));
+      }
+
     };
     const dateData = function (year, month, callback) {
+      let _nowDate = 1;
+      if (year == nowYear && month == nowMonth) {
+        _nowDate = nowDate;
+      }
       if (/^(1|3|5|7|8|10|12)$/.test(month)) {
-        callback(formatDate(31));
+        callback(formatDate(_nowDate, 31));
       } else if (/^(4|6|9|11)$/.test(month)) {
-        callback(formatDate(30));
+        callback(formatDate(_nowDate, 30));
       } else if (/^2$/.test(month)) {
         if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
-          callback(formatDate(29));
+          callback(formatDate(_nowDate, 29));
         } else {
-          callback(formatDate(28));
+          callback(formatDate(_nowDate, 28));
         }
       } else {
         throw new Error('month is illegal');
       }
+      // if (/^(1|3|5|7|8|10|12)$/.test(month)) {
+      //   callback(formatDate(31));
+      // } else if (/^(4|6|9|11)$/.test(month)) {
+      //   callback(formatDate(30));
+      // } else if (/^2$/.test(month)) {
+      //   if (year % 4 === 0 && year % 100 !== 0 || year % 400 === 0) {
+      //     callback(formatDate(29));
+      //   } else {
+      //     callback(formatDate(28));
+      //   }
+      // } else {
+      //   throw new Error('month is illegal');
+      // }
     };
     const hourData = function (one, two, three, callback) {
       const hours = [];
