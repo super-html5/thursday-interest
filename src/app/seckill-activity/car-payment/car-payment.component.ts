@@ -84,6 +84,7 @@ export class CarPaymentComponent implements OnInit {
     this.indexService.judgeCarOrderd(orderSerial)
       .then(res => {
         console.log(res);
+        alert('请点击“OK”进行支付，如未完成支付，请在半小时内到“客户中心-个人中心-服务订单”中进行查看支付。');
         this.goPayment(orderSerial, this.value);
       })
       .catch(res => {
