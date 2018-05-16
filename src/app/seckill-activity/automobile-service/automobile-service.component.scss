@@ -6,6 +6,19 @@
   }
 }
 
+.nav-cell {
+  z-index: 200;
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  ul{
+    background: #fff;
+  }
+}
+
 .classify {
   i {
     color: #50AFDF;
@@ -31,7 +44,7 @@
 .noGoods {
   position: absolute;
   height: 100%;
-  top:0;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
