@@ -12,7 +12,7 @@
     <div *ngFor="let goods of goodses" class="goods row mx-auto clearfix py-3">
       <div class="col-5 pr-0">
         <!--<img src="./assets/images/carService/del.png" alt="" width="100%">-->
-        <img [src]="goods.coverImg" alt="" width="100%">
+        <img [src]="goods.coverImg" alt="" width="100%" style="height: 94px;">
       </div>
       <div class="col-7">
         <div class="text-truncate" style="max-width: 100%;">{{goods?.name}}</div>
@@ -38,8 +38,8 @@
 
 </div>
 
-<div class="nav-cell">
-  <ul *ngIf="!down" class="classify row mx-auto list-unstyled mb-0">
+<div *ngIf="!down" class="nav-cell">
+  <ul class="classify row mx-auto list-unstyled mb-0">
     <li class="col-12 px-0 py-2 border-bottom" (click)="checkType(-1,'全部分类')">
       <span class="px-3">全部分类</span>
       <i *ngIf="selectAll" class="fa fa-check fa-lg float-right mr-4"></i>
