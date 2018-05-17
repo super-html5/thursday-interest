@@ -58,23 +58,6 @@ export class CarPaymentComponent implements OnInit {
         this.disabled = false;
         this.isHaveLoad = false;
         this.btnText = '确认支付';
-        // const _error = JSON.parse(res._body);
-        // if (_error.code === 'item.NotFound') {
-        //   this.setSwalDialogError('商品不存在');
-        // } else if (_error.code === 'illegalItemSeller.NotRule') {
-        //   this.setSwalDialogError('商家不合法');
-        // } else if (_error.code === 'seller.NotFound') {
-        //   this.setSwalDialogError('商家不存在');
-        // } else if (_error.code === 'carLifeOrdersParam.NotRule') {
-        //   this.setSwalDialogError('下单参数不合法');
-        // } else if (_error.code === 'itemId.NotRule') {
-        //   this.setSwalDialogError('商品id不合法');
-        // } else if (_error.code === 'reserveMobile.NotRule') {
-        //   this.setSwalDialogError('预约电话不合法');
-        // } else if (_error.code === 'sellerId.NotRule') {
-        //   this.setSwalDialogError('卖家id不合法');
-        // } else {
-        // }
         this.setSwalDialogError('当前访问人数过多，请稍后再试！');
 
       });
