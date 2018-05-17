@@ -58,8 +58,14 @@ export class CarPaymentComponent implements OnInit {
         this.disabled = false;
         this.isHaveLoad = false;
         this.btnText = '确认支付';
-        this.setSwalDialogError('当前访问人数过多，请稍后再试！');
-
+        const errorMsg = JSON.parse(res._body);
+        if (errorMsg.code === 'isSale.carLifeOrders.NotRule') {
+          alert('此商品已售罄，去看看其它商品吧。');
+          history.go(-2);
+          return;
+        } else {
+          this.setSwalDialogError('当前访问人数过多，请稍后再试！');
+        }
       });
   }
 
@@ -87,7 +93,7 @@ export class CarPaymentComponent implements OnInit {
   goPayment(orderNumber: string, bankCode: number) {
     const frontEndUrl = `https://mobile.sxwinstar.net/ccb/ccbSuccess/ccbSuccess.php`;
     const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
-    const paymentType = '1';
+    const paymentType = '5';
     let subBankCode;
     if (bankCode === 991) {
       if (this.reg.test(this.ua)) {

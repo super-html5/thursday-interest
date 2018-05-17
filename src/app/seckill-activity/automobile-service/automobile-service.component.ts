@@ -103,12 +103,13 @@ export class AutomobileServiceComponent implements OnInit {
       .catch(res => {
         this.isHaveLoad = false;
         this.isComplete = true;
-        const _error = JSON.parse(res._body);
-        if (_error.code === 'category.NotFound') {
-          this.setSwalDialogError('商品分类不存在');
-        } else {
-          this.setSwalDialogError('当前访问人数过多，请稍后再试！');
-        }
+        this.setSwalDialogError('当前访问人数过多，请稍后再试！');
+        // const _error = JSON.parse(res._body);
+        // if (_error.code === 'category.NotFound') {
+        //   this.setSwalDialogError('商品分类不存在');
+        // } else {
+        //   this.setSwalDialogError('当前访问人数过多，请稍后再试！');
+        // }
         console.log(res);
       });
   }
