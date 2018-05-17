@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SwalComponent} from '@toverux/ngsweetalert2';
 import {Location} from '@angular/common';
 
+declare const $: any;
 @Component({
   selector: 'app-automobile-service',
   templateUrl: './automobile-service.component.html',
@@ -39,6 +40,7 @@ export class AutomobileServiceComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(res => {
       this.activeType = Number(res.activeType);
     });
+    $('.olay').remove();
   }
 
   /**
