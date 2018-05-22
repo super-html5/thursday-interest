@@ -2,28 +2,29 @@
 
 .index-bg {
   @include _bg("../../../assets/images/2-1.png", #fc7a3e);
+}
 
-  .mt-10 {
-    margin-top: 13rem;
-    .img-list {
-      width: 88%;
-      margin: 0 6%;
-      z-index: 100;
-    }
+.mt-10 {
+  margin-top: 13rem;
+  .img-list {
+    width: 88%;
+    margin: 0 6%;
+    z-index: 100;
   }
-
 }
 
 .index-bg1 {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fc7a3e;
-  z-index: -1;
+  /* position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: #fc7a3e;
+   z-index: -1;*/
+  @include _bg("../../../assets/images/2-1-1.png", #fc7a3e);
   .countFont {
-    top: 14%;
+    top: -7.8rem;
+    //top: 14%;
     left: 30%;
     width: 40%;
     padding: 4px 0;

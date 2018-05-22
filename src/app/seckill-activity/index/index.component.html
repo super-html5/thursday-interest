@@ -9,8 +9,12 @@
   </div>
 </div>
 <div *ngIf="!isStart" class="container-fluid px-0 index-bg1" [@flyIn]="'inactive'">
-  <div class="position-relative">
-    <img src="./assets/images/2-11.png" alt="" (click)="banImg($event)" width="100%" height="100%">
+  <div class="row mx-auto mt-10 pb-3 position-relative">
+    <!--<img src="./assets/images/2-11.png" alt="" (click)="banImg($event)" width="100%" height="100%">-->
     <div class="countFont position-absolute text-center">距活动开始还有{{startCountNumber}}天</div>
+    <img class="img-list mt-3" src="./assets/images/2-2-1.png" alt="" height="100%" (click)="banImg($event)">
+    <img class="img-list mt-3" src="./assets/images/2-3-1.png" alt="" height="100%" (click)="banImg($event)">
+    <img class="img-list mt-3" src="./assets/images/2-4-1.png" alt="" height="100%" (click)="banImg($event)">
+    <img class="img-list mt-3" src="./assets/images/2-5.png" [routerLink]="['/seckill/car']" [queryParams]="{'activeType':0}" alt="" height="100%">
   </div>
 </div>
