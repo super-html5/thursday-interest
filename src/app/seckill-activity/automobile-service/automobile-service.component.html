@@ -9,7 +9,7 @@
   </div>
 
   <div *ngIf="goodses?.length!=0">
-    <div *ngFor="let goods of goodses" class="goods row mx-auto clearfix py-3">
+    <div *ngFor="let goods of goodses" class="goods row mx-auto clearfix py-3" (click)="buyGoods(goods)">
       <div class="col-5 pr-0">
         <!--<img src="./assets/images/carService/del.png" alt="" width="100%">-->
         <img [src]="goods.coverImg" alt="" width="100%" style="height: 94px;">
@@ -21,7 +21,7 @@
             <span class="text-danger font-weight-bold">￥{{goods?.salePrice| number:'1.2-2'}}</span><br/>
             <span class="text-thought">￥{{goods?.originalPrice| number:'1.2-2'}}</span>
           </div>
-          <button *ngIf="goods?.saleStatus===0" class="col-6 px-0 text-white border-0 rounded" (click)="buyGoods(goods)">
+          <button *ngIf="goods?.saleStatus===0" class="col-6 px-0 text-white border-0 rounded">
             立即抢购
           </button>
           <button *ngIf="goods?.saleStatus===1" disabled class="sell-out col-6 px-0 text-white border-0 rounded">
