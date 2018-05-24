@@ -13,6 +13,7 @@ import {AutomobileServiceComponent} from './automobile-service/automobile-servic
 import { ServiceDetailsComponent } from './service-details/service-details.component';
 import { ServiceBusinessComponent } from './service-details/service-business/service-business.component';
 import { CarPaymentComponent } from './car-payment/car-payment.component';
+import { MorningEveningMarketComponent } from './morning-evening-market/morning-evening-market.component';
 @NgModule({
   imports: [
     ShareModule,
@@ -29,6 +30,7 @@ import { CarPaymentComponent } from './car-payment/car-payment.component';
     ServiceDetailsComponent,
     ServiceBusinessComponent,
     CarPaymentComponent,
+    MorningEveningMarketComponent,
   ],
   providers: [IndexService]
 })

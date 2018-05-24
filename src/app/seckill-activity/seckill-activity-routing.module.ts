@@ -10,11 +10,13 @@ import {AutomobileServiceComponent} from './automobile-service/automobile-servic
 import {ServiceDetailsComponent} from './service-details/service-details.component';
 import {ServiceBusinessComponent} from './service-details/service-business/service-business.component';
 import {CarPaymentComponent} from './car-payment/car-payment.component';
+import {MorningEveningMarketComponent} from './morning-evening-market/morning-evening-market.component';
 
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
   {path: 'index', component: IndexComponent},
+  {path: 'meMarket', component: MorningEveningMarketComponent},
   {path: 'activity', component: ActivityComponent},
   {path: 'car', component: AutomobileServiceComponent},
   {path: 'serviceDetails', component: ServiceDetailsComponent},

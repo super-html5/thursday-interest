@@ -1,0 +1,14 @@
+<div class="container-fluid px-0" [@flyIn]="'inactive'" style="overflow: hidden;">
+  <img class="top-img" src="./assets/images/meMarket/index.png" alt="" width="100%">
+  <div class="row mx-auto big-box">
+    <div class="col-12 px-0 position-relative">
+      <img [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list" src="./assets/images/meMarket/m.png" alt="">
+      <p class="position-absolute">据开市还有06:56:35</p>
+    </div>
+    <div class="col-12 px-0 position-relative">
+      <img [routerLink]="['/seckill/car']" [queryParams]="{'activityId':4}" class="img-list" src="./assets/images/meMarket/e.png" alt="">
+      <p class="position-absolute">开市疯抢中~</p>
+    </div>
+  </div>
+</div>
+
