@@ -75,6 +75,7 @@ export class ActivityComponent implements OnInit {
               localStorage.setItem('ccbToken', res.tokenId);
               alert('登录状态失效，请重新登录');
               location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=thursday';
+              // location.href = '/php-api/wechat_front/ccb/ccb-php/index.php?type=callback&menu=thursday';
             })
             .catch(res => {
 
@@ -112,6 +113,7 @@ export class ActivityComponent implements OnInit {
    */
   toLinkUser(): void {
     location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
+    // location.href = '/user/index';
   }
 
   banImg(event): void {

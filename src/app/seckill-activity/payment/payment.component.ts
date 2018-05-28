@@ -184,11 +184,24 @@ export class PaymentComponent implements OnInit {
         } else if (errorMsg.code === 'haveNotPay.order.NotRule') {
           alert('您已提交过订单 请前往个人中心我的订单进行支付或取消订单');
           location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
+          // location.href = '/user/index';
         } else if (errorMsg.code === 'notBindInfoCard.order.NotRule') {
           alert('未认证交通安全信息卡，请先认证');
           $('#myModal').modal('show');
         } else if (errorMsg.code === 'soldOut.order.NotRule') {
           alert('此面值加油券已售罄，请选择其他面值的加油券。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'justOnce.earlyAndEveningMarket.NotRule') {
+          alert('该活动每天只能购买一次。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'eveningMarketNotStarted.NotRule') {
+          alert('晚市还没开始，请选择其他商品。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'earlyMarketNotStarted.NotRule') {
+          alert('早市还没开始，请选择其他商品。');
           history.go(-2);
           return;
         } else {
