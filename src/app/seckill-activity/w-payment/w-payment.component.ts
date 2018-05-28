@@ -77,6 +77,18 @@ export class WPaymentComponent implements OnInit {
           alert('此面值加油券已售罄，请选择其他面值的加油券。');
           history.go(-2);
           return;
+        } else if (errorMsg.code === 'justOnce.earlyAndEveningMarket.NotRule') {
+          alert('该活动每天只能购买一次。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'eveningMarketNotStarted.NotRule') {
+          alert('晚市还没开始，请选择其他商品。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'earlyMarketNotStarted.NotRule') {
+          alert('早市还没开始，请选择其他商品。');
+          history.go(-2);
+          return;
         } else {
           alert('当前访问人数过多，请稍后再试！');
         }
@@ -89,8 +101,10 @@ export class WPaymentComponent implements OnInit {
    * @param bankCode
    */
   goPayment(orderNumber: string, bankCode: number) {
-    const frontEndUrl = `https://mobile.sxwinstar.net/ccb/thursdaySuccess/thursdayPaySuccess.php`;
-    const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
+    // const frontEndUrl = `https://mobile.sxwinstar.net/ccb/thursdaySuccess/thursdayPaySuccess.php`;
+    // const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
+    const frontEndUrl = `/ccb/thursdaySuccess/thursdayPaySuccess.php`;
+    const paymentUrl = '/wechat/payment/ccbPay.html';
     const paymentType = '1';
     let subBankCode;
     if (bankCode === 991) {
