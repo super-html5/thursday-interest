@@ -1,14 +1,45 @@
-<div class="container-fluid px-0" [@flyIn]="'inactive'" style="overflow: hidden;">
+<div class="container-fluid px-0 pb-4" [@flyIn]="'inactive'" style="overflow: hidden;">
   <img class="top-img" src="./assets/images/meMarket/index.png" alt="" width="100%">
   <div class="row mx-auto big-box">
     <div class="col-12 px-0 position-relative">
-      <img [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list" src="./assets/images/meMarket/m.png" alt="">
-      <p class="position-absolute">据开市还有06:56:35</p>
+      <img *ngIf="!earlyStart" class="img-list" src="./assets/images/meMarket/m.png" alt="">
+      <img *ngIf="earlyStart" [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list"
+           src="./assets/images/meMarket/m.png" alt="">
+      <p *ngIf="!earlyStart" class="position-absolute">据开市还有{{earlyMarketTime}}</p>
+      <p *ngIf="earlyStart" class="position-absolute">开市疯抢中~</p>
     </div>
     <div class="col-12 px-0 position-relative">
-      <img [routerLink]="['/seckill/car']" [queryParams]="{'activityId':4}" class="img-list" src="./assets/images/meMarket/e.png" alt="">
-      <p class="position-absolute">开市疯抢中~</p>
+      <img *ngIf="!eveningStart" class="img-list" src="./assets/images/meMarket/e.png" alt="">
+      <img *ngIf="eveningStart" [routerLink]="['/seckill/car']" [queryParams]="{'activityId':9}" class="img-list" src="./assets/images/meMarket/e.png"
+           alt="">
+      <p *ngIf="!eveningStart" class="position-absolute">据开市还有{{eveningMarketTime}}</p>
+      <p *ngIf="eveningStart" class="position-absolute">开市疯抢中~</p>
     </div>
   </div>
 </div>
 
+<div id="mess_loaddinghtml5" *ngIf="isHaveLoad">
+  <div class="loadding">
+    <div class="loaddingtishi"></div>
+    <div class="spinner">
+      <div class="spinner-container container1">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container2">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+      <div class="spinner-container container3">
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle4"></div>
+      </div>
+    </div>
+  </div>
+</div>

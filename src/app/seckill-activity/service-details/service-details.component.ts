@@ -19,7 +19,7 @@ export class ServiceDetailsComponent implements OnInit {
   isHaveTime: boolean = false;
   htmlDateTime: string;
   isWeekend: boolean;
-  timeNum: number;
+  timeNum: string;
   _phone: string;
   @ViewChild('dialog') private swalDialog: SwalComponent;
   goods: CarItemsList;
@@ -70,19 +70,21 @@ export class ServiceDetailsComponent implements OnInit {
    * 点击立即抢购
    */
   onSubmit() {
+    const timeNum = Number(this.timeNum.split(',')[0]);
+    const timeType = this.timeNum.split(',')[1];
     const myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
     if (!this.isWeekend) {
       this.setSwalDialogError('不在工作日范围内！', '当前选择时间非监测站正常上班时间（周一至周五9:00-18:00）');
     } else if (!myreg.test(this._phone)) {
       this.setSwalDialogError('', '请输入正确的手机号');
-    } else if (this.timeNum <= new Date().getTime()) {
-      console.log(this.timeNum);
-      console.log(new Date().getTime());
+    } else if (timeNum <= new Date().getTime()) {
+      // console.log(timeNum);
+      // console.log(new Date().getTime());
       this.setSwalDialogError('', '预约失败（预约时间已过期）');
     } else {
       this.router.navigate(['/seckill/carPayment', {
         'sellerId': this.business.id,
-        'reserveTime': $('#showDate').html(),
+        'reserveTime': timeType,
         'reserveMobile': this._phone
       }]);
     }
@@ -246,6 +248,7 @@ export class ServiceDetailsComponent implements OnInit {
             }
             const timeStr = selectOneObj.id + selectTwoObj.id + selectThreeObj.id + selectFourObj.id + selectFiveObj.id;
             that.timeNum = that.getDateNumber(timeStr);
+            // that.timeType = that.getDateType(timeStr);
             const newDate = new Date(that.timeNum);
             if (newDate.getDay() === 0) {
               that.isWeekend = false;
@@ -259,14 +262,14 @@ export class ServiceDetailsComponent implements OnInit {
     });
   }
 
-  getDateNumber(dateTime: string): number {
+  getDateNumber(dateTime: string): string {
     const year = dateTime.substring(0, 4);
     const month = dateTime.substring(4, 6);
     const day = dateTime.substring(6, 8);
     const hour = dateTime.substring(8, 10);
     const minute = dateTime.substring(10, 12);
-    const time = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':00';
-    return Date.parse(`${new Date(time)}`);
+    const time = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':00';
+    return Date.parse(`${new Date(time)}`) + ',' + time;
   }
 
 

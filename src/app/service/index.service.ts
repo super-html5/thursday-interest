@@ -171,7 +171,15 @@ export class IndexService {
     return this.http.get(environment.getTimeUrl)
       .toPromise()
       .then(res => res.json() as any)
-      .catch();
+      .catch(this._error);
+  }
+
+  earlyAndEveningMarket(marketType: number): Promise<any> {
+    const earlyAndEveningMarketUrl = `${environment.earlyAndEveningMarketUrl}/${marketType}/type`;
+    return this.http.get(earlyAndEveningMarketUrl, {headers: this.headers})
+      .toPromise()
+      .then(res => res.json() as any)
+      .catch(this._error);
   }
 
   /**
