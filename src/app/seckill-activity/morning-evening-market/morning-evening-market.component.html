@@ -9,8 +9,8 @@
     </div>
     <div class="col-12 px-0 position-relative">
       <img *ngIf="!eveningStart" class="img-list" src="./assets/images/meMarket/e.png" alt="">
-      <img *ngIf="eveningStart" [routerLink]="['/seckill/car']" [queryParams]="{'activityId':9}" class="img-list" src="./assets/images/meMarket/e.png"
-           alt="">
+      <img *ngIf="eveningStart" [routerLink]="['/seckill/car']" [queryParams]="{'activeType':10}" class="img-list"
+           src="./assets/images/meMarket/e.png" alt="">
       <p *ngIf="!eveningStart" class="position-absolute">据开市还有{{eveningMarketTime}}</p>
       <p *ngIf="eveningStart" class="position-absolute">开市疯抢中~</p>
     </div>
