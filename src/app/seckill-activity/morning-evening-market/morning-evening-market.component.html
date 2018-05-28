@@ -3,8 +3,7 @@
   <div class="row mx-auto big-box">
     <div class="col-12 px-0 position-relative">
       <img *ngIf="!earlyStart" class="img-list" src="./assets/images/meMarket/m.png" alt="">
-      <img *ngIf="earlyStart" [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':202}" class="img-list"
-           src="./assets/images/meMarket/m.png" alt="">
+      <img *ngIf="earlyStart" [routerLink]="['/seckill/activity']" [queryParams]="{'activityId':9}" class="img-list" src="./assets/images/meMarket/m.png" alt="">
       <p *ngIf="!earlyStart" class="position-absolute">据开市还有{{earlyMarketTime}}</p>
       <p *ngIf="earlyStart" class="position-absolute">开市疯抢中~</p>
     </div>
