@@ -22,8 +22,6 @@ export class MorningEveningMarketComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.earlyInterval);
-
     document.body.style.background = '#231D4D';
     this.earlyMarket(1);
     this.eveningMarket(2);
