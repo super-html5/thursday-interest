@@ -59,4 +59,8 @@ export const environment = {
    * 汽车养护 确认收货
    */
   carOrderConfirm: `/ccb-api/api/v1/cbc/carLife/orders/confirm`,
+  /**
+   * 判断早晚市是否开始
+   */
+  earlyAndEveningMarketUrl: `/ccb-api/api/v1/cbc/carLife/category/checkEarlyAndEveningMarketIsOk`
 };
