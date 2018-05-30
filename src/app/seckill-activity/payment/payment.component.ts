@@ -3,6 +3,7 @@ import {Title} from '@angular/platform-browser';
 import {flyIn} from '../../animationsVariable';
 import {ActivatedRoute, Router} from '@angular/router';
 import {IndexService} from '../../service/index.service';
+import {environment} from '../../../environments/environment';
 declare var $: any;
 @Component({
   selector: 'app-payment',
@@ -184,7 +185,8 @@ export class PaymentComponent implements OnInit {
         } else if (errorMsg.code === 'haveNotPay.order.NotRule') {
           alert('您已提交过订单 请前往个人中心我的订单进行支付或取消订单');
           // location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
-          location.href = '/ccb/user/index';
+          // location.href = '/ccb/user/index';
+          location.href = environment.userPhpUrl;
         } else if (errorMsg.code === 'notBindInfoCard.order.NotRule') {
           alert('未认证交通安全信息卡，请先认证');
           $('#myModal').modal('show');
@@ -206,8 +208,8 @@ export class PaymentComponent implements OnInit {
   goPayment(orderNumber: string, bankCode: number) {
     // const frontEndUrl = `https://mobile.sxwinstar.net/ccb/thursdaySuccess/thursdayPaySuccess.php`;
     // const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
-    const frontEndUrl = `/ccb/thursdaySuccess/thursdayPaySuccess.php`;
-    const paymentUrl = '/wechat/payment/ccbPay.html';
+    const frontEndUrl = environment.frontEndUrl;
+    const paymentUrl = environment.paymentUrl;
     const paymentType = '1';
     const subBankCode = '';
     location.href = `${paymentUrl}?bankCode=${bankCode}&frontEndUrl=${frontEndUrl}&orderNumber=${orderNumber}` +

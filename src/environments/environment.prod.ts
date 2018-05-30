@@ -1,5 +1,9 @@
 export const environment = {
   production: true,
+  frontEndUrl: `/ccb/ccbSuccess/ccbSuccess.php`,
+  paymentUrl: `/wechat/payment/ccbPay.html`,
+  thursdayPhpUrl: `/ccb/ccb-php/index.php?type=callback&menu=thursday`,
+  userPhpUrl: `/ccb/web/user/index`,
   /**
    * 获取油券列表
    */

@@ -7,7 +7,10 @@ const baseText = '/cbc-api';
 
 export const environment = {
     production: false,
-
+    frontEndUrl: `/php-api/wechat_front/ccb/ccbSuccess/ccbSuccess.php`,
+    paymentUrl: `/wechat/payment/ccbPay.html`,
+    thursdayPhpUrl: `/php-api/wechat_front/ccb/ccb-php/index.php?type=callback&menu=thursday`,
+    userPhpUrl: `/ccb/user/index`,
 
     /**
      * 获取油券列表

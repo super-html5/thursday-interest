@@ -3,6 +3,7 @@ import {Title} from '@angular/platform-browser';
 import {flyIn} from '../../animationsVariable';
 import {IndexService} from '../../service/index.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-w-payment',
@@ -72,7 +73,9 @@ export class WPaymentComponent implements OnInit {
           history.go(-2);
         } else if (errorMsg.code === 'haveNotPay.order.NotRule') {
           alert('您已提交过订单 请前往个人中心我的订单进行支付或取消订单');
-          location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
+          // location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
+          // location.href = '/ccb/user/index';
+          // location.href = environment.userPhpUrl;
         } else if (errorMsg.code === 'soldOut.order.NotRule') {
           alert('此面值加油券已售罄，请选择其他面值的加油券。');
           history.go(-2);
@@ -103,8 +106,8 @@ export class WPaymentComponent implements OnInit {
   goPayment(orderNumber: string, bankCode: number) {
     // const frontEndUrl = `https://mobile.sxwinstar.net/ccb/thursdaySuccess/thursdayPaySuccess.php`;
     // const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
-    const frontEndUrl = `/ccb/thursdaySuccess/thursdayPaySuccess.php`;
-    const paymentUrl = '/wechat/payment/ccbPay.html';
+    const frontEndUrl = environment.frontEndUrl;
+    const paymentUrl = environment.paymentUrl;
     const paymentType = '1';
     let subBankCode;
     if (bankCode === 991) {

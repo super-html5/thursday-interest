@@ -5,6 +5,7 @@ import {IndexService} from '../../service/index.service';
 import {ActivatedRoute} from '@angular/router';
 import {SwalComponent} from '@toverux/ngsweetalert2';
 import {Location} from '@angular/common';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-car-payment',
@@ -103,8 +104,10 @@ export class CarPaymentComponent implements OnInit {
    * @param bankCode
    */
   goPayment(orderNumber: string, bankCode: number) {
-    const frontEndUrl = `https://mobile.sxwinstar.net/ccb/ccbSuccess/ccbSuccess.php`;
-    const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
+    // const frontEndUrl = `https://mobile.sxwinstar.net/ccb/ccbSuccess/ccbSuccess.php`;
+    // const paymentUrl = 'https://mobile.sxwinstar.net/wechat/payment/ccbPay.html';
+    const frontEndUrl = environment.frontEndUrl;
+    const paymentUrl = environment.paymentUrl;
     const paymentType = '5';
     let subBankCode;
     if (bankCode === 991) {

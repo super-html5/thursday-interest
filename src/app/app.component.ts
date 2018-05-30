@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IndexService} from './service/index.service';
+import {environment} from '../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +24,9 @@ export class AppComponent implements OnInit {
       localStorage.setItem('nickname', '用户无名氏');
     }
     if (!localStorage.getItem('openid')) {
-      location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=thursday';
+      // location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=thursday';
+      // location.href = '/php-api/wechat_front/ccb/ccb-php/index.php?type=callback&menu=thursday';
+      // location.href = environment.thursdayPhpUrl;
       return;
     } else {
       this.indexService.getTokenId(localStorage.getItem('headimgurl'),

@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {IndexService} from '../../service/index.service';
 import {Money} from '../../entity/index';
+import {environment} from '../../../environments/environment';
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -74,8 +75,9 @@ export class ActivityComponent implements OnInit {
             .then(res => {
               localStorage.setItem('ccbToken', res.tokenId);
               alert('登录状态失效，请重新登录');
-              location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=thursday';
+              // location.href = 'https://mobile.sxwinstar.net/ccb/ccb-php/index.php?type=callback&menu=thursday';
               // location.href = '/php-api/wechat_front/ccb/ccb-php/index.php?type=callback&menu=thursday';
+              // location.href = environment.thursdayPhpUrl;
             })
             .catch(res => {
 
@@ -112,8 +114,9 @@ export class ActivityComponent implements OnInit {
    * 查看我的加油券
    */
   toLinkUser(): void {
-    location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
-    // location.href = '/user/index';
+    // location.href = 'https://mobile.sxwinstar.net/ccb/web/user/index';
+    // location.href = '/ccb/user/index';
+    location.href = environment.userPhpUrl;
   }
 
   banImg(event): void {
