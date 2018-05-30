@@ -63,6 +63,18 @@ export class CarPaymentComponent implements OnInit {
           alert('此商品已售罄，去看看其它商品吧。');
           history.go(-2);
           return;
+        } else if (errorMsg.code === 'justOnce.earlyAndEveningMarket.NotRule') {
+          alert('该活动每天只能购买一次。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'eveningMarketNotStarted.NotRule') {
+          alert('晚市还没开始，请选择其他商品。');
+          history.go(-2);
+          return;
+        } else if (errorMsg.code === 'earlyMarketNotStarted.NotRule') {
+          alert('早市还没开始，请选择其他商品。');
+          history.go(-2);
+          return;
         } else {
           this.setSwalDialogError('当前访问人数过多，请稍后再试！');
         }
