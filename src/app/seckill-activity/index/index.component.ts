@@ -21,9 +21,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('加油券秒杀');
-    document.body.style.backgroundColor = '#fc7a3e';
-    this.getTime();
-
+    // document.body.style.backgroundColor = '#fc7a3e';
+    document.body.style.backgroundColor = '#973955';
+    // this.getTime();
   }
 
   /**

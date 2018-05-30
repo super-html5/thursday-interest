@@ -14,7 +14,7 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.2);
-  ul{
+  ul {
     background: #fff;
   }
 }
@@ -27,16 +27,32 @@
 }
 
 .goods {
-  border-bottom: 2px solid #e0e0e0;
+  background: #efefef;
+  //border-bottom: 2px solid #e0e0e0;
+  & .col-6 > div {
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .goods-details {
+    font-size: .8rem;
+    line-height: 1.2;
+  }
   .text-thought {
     text-decoration: line-through;
     color: #666;
   }
   button {
-    height: 3rem;
-    background: #50AFDF;
+    height: 2.4rem;
+    background: #2185D0;
+    font-size: .8rem;
+    letter-spacing: 0.08em;
     &.sell-out {
       background: #999;
+    }
+    @media screen and (max-width: 320px) {
+      font-size: .7rem;
+      letter-spacing: 0;
     }
   }
 }

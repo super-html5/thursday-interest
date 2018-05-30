@@ -1,4 +1,4 @@
-<div *ngIf="isComplete" class="container-fluid px-0 bg-white" [@flyIn]="'inactive'">
+<div *ngIf="isComplete" class="container-fluid px-0" [@flyIn]="'inactive'">
 
   <div class="row mx-auto">
     <div class="bg-blue col-12 px-0 py-2 text-white" (click)="changeDown()">
@@ -8,10 +8,10 @@
     </div>
   </div>
 
-  <div *ngIf="goodses?.length!=0">
+  <!--<div *ngIf="goodses?.length!=0">
     <div *ngFor="let goods of goodses" class="goods row mx-auto clearfix py-3" (click)="buyGoods(goods)">
       <div class="col-5 pr-0">
-        <!--<img src="./assets/images/carService/del.png" alt="" width="100%">-->
+        &lt;!&ndash;<img src="./assets/images/carService/del.png" alt="" width="100%">&ndash;&gt;
         <img [src]="goods.coverImg" alt="" width="100%" style="height: 94px;">
       </div>
       <div class="col-7">
@@ -30,7 +30,34 @@
         </div>
       </div>
     </div>
+  </div>-->
+
+  <div *ngIf="goodses?.length!=0" class="goods row mx-auto clearfix pb-3 px-2">
+    <div *ngFor="let goods of goodses" class="col-6 px-1 mt-2">
+      <div (click)="buyGoods(goods)">
+<!--
+        <img src="./assets/images/carService/del.png" alt="" width="100%">
+-->
+        <img [src]="goods.coverImg" alt="" width="100%">
+        <div class="row mx-auto mt-1 px-2">
+          <div class="goods-details">我是商品我是商品我是商品 我是商品</div>
+
+          <div class="col-7 my-1 px-0">
+            <span class="text-thought">￥{{goods?.originalPrice| number:'1.2-2'}}</span><br/>
+            <span style="color: #2185D0;">￥{{goods?.salePrice| number:'1.2-2'}}</span>
+          </div>
+          <button *ngIf="goods?.saleStatus===0" class="col-5 mt-2 mb-1 px-0 text-white border-0 rounded">
+            立即抢购
+          </button>
+          <button *ngIf="goods?.saleStatus===1" disabled class="sell-out col-5 mt-2 mb-1 px-0 text-white border-0 rounded">
+            已售罄
+          </button>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 
   <div *ngIf="goodses?.length==0">
     <img style="margin-top: 7rem;" src="./assets/images/carService/noGoods.png" alt="" width="100%">

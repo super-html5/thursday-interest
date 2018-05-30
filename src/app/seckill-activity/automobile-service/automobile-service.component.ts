@@ -82,6 +82,11 @@ export class AutomobileServiceComponent implements OnInit {
       });
     }
     console.log(this.goodses);
+    if (this.goodses.length === 0) {
+      document.body.style.background = '#fff';
+    } else {
+      document.body.style.background = '#efefef';
+    }
   }
 
   /**
@@ -101,11 +106,16 @@ export class AutomobileServiceComponent implements OnInit {
             }
           });
         });
+        if (this.goodses.length !== 0) {
+          document.body.style.background = '#efefef';
+        }
       })
       .catch(res => {
         this.isHaveLoad = false;
         this.isComplete = true;
+        document.body.style.background = '#fff';
         this.setSwalDialogError('当前访问人数过多，请稍后再试！');
+
         // const _error = JSON.parse(res._body);
         // if (_error.code === 'category.NotFound') {
         //   this.setSwalDialogError('商品分类不存在');
